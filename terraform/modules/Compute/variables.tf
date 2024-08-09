@@ -5,10 +5,7 @@ variable "region" {
 variable "subnets-compute" {
   description = "public subnetes for compute instances"
 }
-variable "ami" {
-  type        = string
-  description = "ami for jenkins"
-}
+
 variable "ami-jenkins" {
   type        = string
   description = "ami for jenkins"

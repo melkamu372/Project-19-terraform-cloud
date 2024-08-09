@@ -1,16 +1,16 @@
+# launch template for wordpress
 
-# launch template for bastion
-
-resource "aws_launch_template" "bastion-launch-template" {
-  image_id               = var.ami-bastion
+resource "aws_launch_template" "wordpress-launch-template" {
+  image_id               = var.ami-web
   instance_type          = "t2.micro"
-  vpc_security_group_ids = var.bastion-sg
+  vpc_security_group_ids = var.web-sg
 
   iam_instance_profile {
     name = var.instance_profile
   }
 
   key_name = var.keypair
+
 
   placement {
     availability_zone = "random_shuffle.az_list.result"
@@ -23,32 +23,30 @@ resource "aws_launch_template" "bastion-launch-template" {
   tag_specifications {
     resource_type = "instance"
 
-
     tags = merge(
       var.tags,
       {
-        Name = "bastion-launch-template"
+        Name = "wordpress-launch-template"
       },
     )
-
   }
 
-  user_data = filebase64("${path.module}/bastion.sh")
+  # user_data = filebase64("${path.module}/wordpress.sh")
 }
 
 
-# launch template for nginx
-
-resource "aws_launch_template" "nginx-launch-template" {
-  image_id               = var.ami-nginx
+# launch template for toooling
+resource "aws_launch_template" "tooling-launch-template" {
+  image_id               = var.ami-web
   instance_type          = "t2.micro"
-  vpc_security_group_ids = var.nginx-sg
+  vpc_security_group_ids = var.web-sg
 
   iam_instance_profile {
     name = var.instance_profile
   }
 
   key_name = var.keypair
+
 
   placement {
     availability_zone = "random_shuffle.az_list.result"
@@ -61,13 +59,14 @@ resource "aws_launch_template" "nginx-launch-template" {
   tag_specifications {
     resource_type = "instance"
 
+
     tags = merge(
       var.tags,
       {
-        Name = "nginx-launch-template"
+        Name = "tooling-launch-template"
       },
     )
   }
 
-  user_data = filebase64("${path.module}/nginx.sh")
+  # user_data = filebase64("${path.module}/tooling.sh")
 }

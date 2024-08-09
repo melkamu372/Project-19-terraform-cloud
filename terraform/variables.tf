@@ -54,10 +54,29 @@ variable "environment" {
 
 }
 
-variable "ami" {
+variable "ami-bastion" {
   type        = string
   description = "AMI ID for the launch template"
 }
+
+
+variable "ami-web" {
+  type        = string
+  description = "AMI ID for the launch template"
+}
+
+
+variable "ami-nginx" {
+  type        = string
+  description = "AMI ID for the launch template"
+}
+
+
+variable "ami-sonar" {
+  type        = string
+  description = "AMI ID for the launch template"
+}
+
 
 
 variable "keypair" {
@@ -97,7 +116,7 @@ variable "force_destroy" {
   default     = false
 }
 
-variable "ami_ids" {
-  description = "Map of AMI IDs per region"
-  type        = map(map(string))
-}
+# variable "ami_ids" {
+#   description = "Map of AMI IDs per region"
+#   type        = map(map(string))
+# }
