@@ -115,6 +115,16 @@ variable "force_destroy" {
   type        = bool
   default     = false
 }
+variable "AWS_ACCESS_KEY_ID" {
+  type        = string
+  description = "AWS Access Key ID for authentication"
+}
+
+variable "AWS_SECRET_ACCESS_KEY" {
+  type        = string
+  description = "AWS Secret Access Key for authentication"
+  sensitive   = true
+}
 
 # variable "ami_ids" {
 #   description = "Map of AMI IDs per region"
