@@ -1,6 +1,6 @@
 region = "us-east-1"
 
-bucket_name   = "melkamu-dev-terraform-bucket"
+bucket_name   = "melkamu-prod-terraform-bucket"
 force_destroy = true
 table_name    = "terraform-locks"
 
